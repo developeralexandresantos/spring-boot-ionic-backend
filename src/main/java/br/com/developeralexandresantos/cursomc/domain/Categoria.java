@@ -1,13 +1,21 @@
 package br.com.developeralexandresantos.cursomc.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
 public class Categoria implements Serializable {
 
     private static final long serialVersionUID = 2183594983186033320L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+
     String nome;
 
     public Categoria() {
