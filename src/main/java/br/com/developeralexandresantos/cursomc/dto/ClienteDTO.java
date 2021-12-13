@@ -1,6 +1,7 @@
 package br.com.developeralexandresantos.cursomc.dto;
 
 import br.com.developeralexandresantos.cursomc.domain.Cliente;
+import br.com.developeralexandresantos.cursomc.services.validation.ClienteInsert;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
@@ -23,7 +24,7 @@ public class ClienteDTO implements Serializable {
     public ClienteDTO() {
     }
 
-    public ClienteDTO(Cliente obj){
+    public ClienteDTO(Cliente obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.email = obj.getEmail();
