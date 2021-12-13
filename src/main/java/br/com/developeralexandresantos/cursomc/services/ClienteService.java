@@ -30,7 +30,6 @@ public class ClienteService {
 	}
 
 	public Cliente udpate(Cliente obj) {
-
 		Cliente newObj = find(obj.getId());
 		updateData(newObj, obj);
 		return repo.save(newObj);
