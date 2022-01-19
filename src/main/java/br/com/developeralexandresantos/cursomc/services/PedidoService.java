@@ -1,19 +1,18 @@
 package br.com.developeralexandresantos.cursomc.services;
 
-import java.util.Date;
-import java.util.Optional;
-
 import br.com.developeralexandresantos.cursomc.domain.ItemPedido;
 import br.com.developeralexandresantos.cursomc.domain.PagamentoComBoleto;
+import br.com.developeralexandresantos.cursomc.domain.Pedido;
 import br.com.developeralexandresantos.cursomc.domain.enums.EstadoPagamento;
 import br.com.developeralexandresantos.cursomc.repositories.ItemPedidoRepository;
 import br.com.developeralexandresantos.cursomc.repositories.PagamentoRepository;
+import br.com.developeralexandresantos.cursomc.repositories.PedidoRepository;
+import br.com.developeralexandresantos.cursomc.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.developeralexandresantos.cursomc.domain.Pedido;
-import br.com.developeralexandresantos.cursomc.repositories.PedidoRepository;
-import br.com.developeralexandresantos.cursomc.services.exceptions.ObjectNotFoundException;
+import java.util.Date;
+import java.util.Optional;
 
 @Service
 public class PedidoService {
@@ -66,7 +65,7 @@ public class PedidoService {
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
 		System.out.println(obj);
-		emailService.sendOrderConfirmationEmail(obj);
+		emailService.sendOrderConfirmationHtmlEmail(obj);
 		return obj;
 	}
 }
