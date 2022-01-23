@@ -8,7 +8,6 @@ import br.com.developeralexandresantos.cursomc.repositories.ItemPedidoRepository
 import br.com.developeralexandresantos.cursomc.repositories.PagamentoRepository;
 import br.com.developeralexandresantos.cursomc.repositories.PedidoRepository;
 import br.com.developeralexandresantos.cursomc.services.exceptions.ObjectNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -17,26 +16,29 @@ import java.util.Optional;
 @Service
 public class PedidoService {
 
-	@Autowired
-	private PedidoRepository repo;
+	private final PedidoRepository repo;
 
-	@Autowired
-	private BoletoService boletoService;
+	private final BoletoService boletoService;
 
-	@Autowired
-	private ProdutoService produtoService;
+	private final ProdutoService produtoService;
 
-	@Autowired
-	private PagamentoRepository pagamentoRepository;
+	private final PagamentoRepository pagamentoRepository;
 
-	@Autowired
-	private ItemPedidoRepository itemPedidoRepository;
+	private final ItemPedidoRepository itemPedidoRepository;
 
-	@Autowired
-	private ClienteService clienteService;
+	private final ClienteService clienteService;
 	
-	@Autowired
-	private EmailService emailService;
+	private final EmailService emailService;
+
+	public PedidoService(PedidoRepository repo, BoletoService boletoService, ProdutoService produtoService, PagamentoRepository pagamentoRepository, ItemPedidoRepository itemPedidoRepository, ClienteService clienteService, EmailService emailService) {
+		this.repo = repo;
+		this.boletoService = boletoService;
+		this.produtoService = produtoService;
+		this.pagamentoRepository = pagamentoRepository;
+		this.itemPedidoRepository = itemPedidoRepository;
+		this.clienteService = clienteService;
+		this.emailService = emailService;
+	}
 
 	public Pedido find(Integer id) {
 		Optional<Pedido> obj = repo.findById(id);
